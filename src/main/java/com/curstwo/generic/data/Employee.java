@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Employee {
     private String firstName;
     private String lastName;
-    private String fullName = firstName + " " + lastName;
+    private String fullName;
 
     public Employee(String firstName, String secondName) {
         this.firstName = firstName;

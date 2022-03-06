@@ -1,6 +1,7 @@
 package com.curstwo.generic.services;
 
 import com.curstwo.generic.data.Employee;
+import com.curstwo.generic.exceptions.EmployeeNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,11 @@ public class EmployeeController {
 
     @GetMapping("/add")
     public Object addEmployee(@RequestParam String firstName, @RequestParam String lastName){
-        return employeeService.addEmployee(firstName, lastName);
+        try {
+            return employeeService.addEmployee(firstName, lastName);
+        } catch (EmployeeNotFoundException e) {
+            return firstName + " " + lastName + " нет в массиве!";
+        }
     }
 
     @ResponseStatus

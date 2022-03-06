@@ -26,18 +26,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public Object addEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (employees.containsKey(employee.getFullName())) {
-            throw new BadRequestException();
+        if (employees.containsKey(firstName + " " + lastName)) {
+            throw new EmployeeNotFoundException();
         }
 
-        employees.put(employee.getFullName(), employee);
+        employees.put(firstName + " " + lastName, employee);
         return employee;
     }
 
     public Object deleteEmployee(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (employees.get(employee.getFullName()) != null) {
-            employees.remove(employee.getFullName());
+        if (employees.get(firstName + " " + lastName) != null) {
+            employees.remove(firstName + " " + lastName);
             return employee;
         }
 
@@ -45,9 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Object findEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
-        if (employees.containsKey(employee.getFullName())) {
-            return employees.get(employee.getFullName());
+        if (employees.containsKey(firstName + " " + lastName)) {
+            return employees.get(firstName + " " + lastName);
         }
         throw new NotFoundException();
     }
