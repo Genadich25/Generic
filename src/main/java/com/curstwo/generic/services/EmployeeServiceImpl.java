@@ -10,14 +10,28 @@ import java.util.Map;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    Employee emp1 = new Employee("Григорий","Иванов");
-    Employee emp2 = new Employee("Иван","Иванов");
-    Employee emp3 = new Employee("Михаил","Петрович");
+    Employee emp1 = new Employee("Григорий","Иванов", 1, 55000);
+    Employee emp2 = new Employee("Иван","Иванов",1, 51000);
+    Employee emp3 = new Employee("Михаил","Петрович",1, 66000);
+    Employee emp4 = new Employee("Павел","Сергеевич",2, 61000);
+    Employee emp5 = new Employee("Петр","Григорьевич",2, 64000);
+    Employee emp6 = new Employee("Игорь","Дмитреевич",2, 53000);
+    Employee emp7 = new Employee("Евгений","Олегович",2, 87000);
+    Employee emp8 = new Employee("Александр","Николаевич",3, 44000);
+    Employee emp9 = new Employee("Владимир","Витальевич",3, 56000);
+
+
 
     Map<String, Employee> employees = new HashMap<>(Map.of(
             emp1.getFullName() , emp1,
             emp2.getFullName() , emp2,
-            emp3.getFullName() , emp3
+            emp3.getFullName() , emp3,
+            emp4.getFullName() , emp4,
+            emp5.getFullName() , emp5,
+            emp6.getFullName() , emp6,
+            emp7.getFullName() , emp7,
+            emp8.getFullName() , emp8,
+            emp9.getFullName() , emp9
     ));
 
     public Map<String, Employee> print(){
@@ -49,5 +63,9 @@ public class EmployeeServiceImpl implements EmployeeService {
             return employees.get(firstName + " " + lastName);
         }
         throw new NotFoundException();
+    }
+
+    public Map<String, Employee> getEmployees() {
+        return employees;
     }
 }
