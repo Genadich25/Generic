@@ -36,6 +36,7 @@ public class DepartmentsServiceImpl implements DepartmentService{
                 .get();
     }
 
+
     public Employee minSalary(int departmentId){
         Stream<Employee> stream = employeeService.getEmployees().values().stream();
         return stream
