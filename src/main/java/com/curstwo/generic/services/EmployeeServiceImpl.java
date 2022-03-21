@@ -2,8 +2,10 @@ package com.curstwo.generic.services;
 
 import com.curstwo.generic.data.Employee;
 import com.curstwo.generic.exceptions.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import javax.xml.parsers.SAXParser;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +41,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Employee addEmployee(String firstName, String lastName) {
+        if(!StringUtils.isAlpha(firstName)){
+            throw new BadRequestException();
+        }
+        firstName = StringUtils.capitalize(firstName);
+        lastName = StringUtils.capitalize(lastName);
         Employee employee = new Employee(firstName, lastName);
         if (employees.containsKey(firstName + " " + lastName)) {
             throw new EmployeeNotFoundException();
