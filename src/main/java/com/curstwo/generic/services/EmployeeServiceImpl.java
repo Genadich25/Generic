@@ -41,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Employee addEmployee(String firstName, String lastName) {
-        if(!StringUtils.isAlpha(firstName)){
+        if(!StringUtils.isAlpha(firstName) || !StringUtils.isAlpha(lastName)){
             throw new BadRequestException();
         }
         firstName = StringUtils.capitalize(firstName);
