@@ -1,7 +1,6 @@
 package com.curstwo.generic.services;
 
 import com.curstwo.generic.data.Employee;
-import com.curstwo.generic.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

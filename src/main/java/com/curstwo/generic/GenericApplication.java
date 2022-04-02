@@ -10,4 +10,5 @@ public class GenericApplication {
         SpringApplication.run(GenericApplication.class, args);
     }
 
+
 }
